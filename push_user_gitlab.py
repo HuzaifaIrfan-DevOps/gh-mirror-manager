@@ -55,10 +55,18 @@ def main():
         os.makedirs(user_dir, exist_ok=True)
         for user_repo in user_repos:
             repo_url = f"https://github.com/{user_repo}.git"
+            
+            # Insert "dot" after "/" if there is a "." after the "/"
+            user_part, repo_part = user_repo.split('/', 1)
+            if '.' in repo_part:
+                user_repo_gitlab = f"{user_part}/dot{repo_part}"
+            else:
+                user_repo_gitlab = user_repo
+
             dest_path = os.path.join("user", user_repo)
             if os.path.exists(dest_path):
                 # Push to GitLab self-hosted
-                target_url = f"http://192.168.18.215/{user_repo}.git"
+                target_url = f"http://192.168.18.215/{user_repo_gitlab}.git"
                 print(f"🚀 Pushing to: {target_url}")
                 subprocess.run(['git', '--git-dir', dest_path, 'push', '--mirror', target_url], check=True)
             else:
