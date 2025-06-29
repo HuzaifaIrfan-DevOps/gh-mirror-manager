@@ -35,6 +35,7 @@ uv run clone_orgs_repos.py
 
 ```sh
 uv run update_users_repos.py
+uv run update_orgs_repos.py
 ```
 
 ## Create User Gitlab
