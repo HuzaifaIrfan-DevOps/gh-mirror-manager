@@ -1,60 +1,21 @@
-
-import os
-import csv
-from glob import glob
-import pprint
 import subprocess
+import os
+from users_repos import users_repos
 
-def read_ignore_file(filename):
-    ignore_list = []
-    if os.path.exists(filename):
-        with open(filename, 'r', encoding='utf-8') as f:
-            for line in f:
-                line = line.strip()
-                if line and not line.startswith('#'):
-                    ignore_list.append(line)
-    return ignore_list
+from dotenv import load_dotenv
+import os 
+# Load environment variables from .env file
+load_dotenv(override=True)
 
-def get_ignore_lists():
-    userignore = read_ignore_file('user/.userignore')
-    repoignore = read_ignore_file('user/.repoignore')
-    return userignore, repoignore
+GITLAB_URL = os.getenv("GITLAB_URL", "http://localhost/")
 
-
-userignore, repoignore = get_ignore_lists()
-print("User Ignore List:", userignore)
-print("Repo Ignore List:", repoignore)
-
-
-def read_users_repos_from_csv():
-    users_repos = {}
-    csv_files = glob('user/*.csv')
-    for csv_file in csv_files:
-        user = os.path.splitext(os.path.basename(csv_file))[0]
-        if user in userignore:
-            continue
-        with open(csv_file, 'r', encoding='utf-8') as f:
-            reader = csv.reader(f)
-            user_repos = []
-            for row in reader:
-                if not row:
-                    continue
-                repo = row[0].strip()
-                if repo and repo not in repoignore:
-                    user_repos.append(repo)
-            if user_repos:
-                users_repos[user] = user_repos
-    return users_repos
-
-users_repos = read_users_repos_from_csv()
-pprint.pprint(users_repos)
-
+# This script pushes the mirror repositories for each user listed in users_repos.py to a self-hosted GitLab instance.
 def main():
     for user, user_repos in users_repos.items():
         user_dir = os.path.join("user", user)
         os.makedirs(user_dir, exist_ok=True)
         for user_repo in user_repos:
-            repo_url = f"https://github.com/{user_repo}.git"
+            # repo_url = f"https://github.com/{user_repo}.git"
             
             # Only insert "dot" after "/" if there is a "." immediately after the "/"
             user_part, repo_part = user_repo.split('/', 1)
@@ -66,7 +27,7 @@ def main():
             dest_path = os.path.join("user", user_repo)
             if os.path.exists(dest_path):
                 # Push to GitLab self-hosted
-                target_url = f"http://192.168.18.215/{user_repo_gitlab}.git"
+                target_url = f"{GITLAB_URL}/{user_repo_gitlab}.git"
                 print(f"🚀 Pushing to: {target_url}")
                 # subprocess.run(['git', '--git-dir', dest_path, 'push', '--mirror', target_url], check=True)
                 subprocess.run(['git', '--git-dir', dest_path, 'push', '--all', target_url], check=True)

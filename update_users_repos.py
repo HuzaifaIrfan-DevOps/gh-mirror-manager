@@ -2,6 +2,7 @@ import subprocess
 import os
 from users_repos import users_repos
 
+# This script updates the mirror repositories for each user listed in users_repos.py
 def main():
     for user, user_repos in users_repos.items():
         user_dir = os.path.join("user", user)
