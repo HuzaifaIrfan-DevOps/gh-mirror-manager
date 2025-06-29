@@ -214,3 +214,4 @@ org/*
 !org/.repoignore.example
 
 tmp/
+.vscode/
