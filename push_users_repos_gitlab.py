@@ -56,9 +56,9 @@ def main():
         for user_repo in user_repos:
             repo_url = f"https://github.com/{user_repo}.git"
             
-            # Insert "dot" after "/" if there is a "." after the "/"
+            # Only insert "dot" after "/" if there is a "." immediately after the "/"
             user_part, repo_part = user_repo.split('/', 1)
-            if '.' in repo_part:
+            if repo_part[0] == ".":
                 user_repo_gitlab = f"{user_part}/dot{repo_part}"
             else:
                 user_repo_gitlab = user_repo
