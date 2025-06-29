@@ -68,7 +68,9 @@ def main():
                 # Push to GitLab self-hosted
                 target_url = f"http://192.168.18.215/{user_repo_gitlab}.git"
                 print(f"🚀 Pushing to: {target_url}")
-                subprocess.run(['git', '--git-dir', dest_path, 'push', '--mirror', target_url], check=True)
+                # subprocess.run(['git', '--git-dir', dest_path, 'push', '--mirror', target_url], check=True)
+                subprocess.run(['git', '--git-dir', dest_path, 'push', '--all', target_url], check=True)
+                # subprocess.run(['git', '--git-dir', dest_path, 'push', '--tags', target_url], check=True)
             else:
                 print(f"Repo {user_repo} not exists in {dest_path}, skipping.")
 
