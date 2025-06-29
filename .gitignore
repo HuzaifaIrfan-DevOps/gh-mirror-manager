@@ -212,3 +212,5 @@ user/*
 org/*
 !org/.orgignore.example
 !org/.repoignore.example
+
+tmp/
