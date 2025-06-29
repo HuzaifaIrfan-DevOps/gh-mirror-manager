@@ -207,11 +207,11 @@ marimo/_lsp/
 __marimo__/
 
 user/*
-!user/.userignore.example
-!user/.repoignore.example
 org/*
-!org/.orgignore.example
-!org/.repoignore.example
+
+.userignore
+.orgignore
+.repoignore
 
 tmp/
 .vscode/

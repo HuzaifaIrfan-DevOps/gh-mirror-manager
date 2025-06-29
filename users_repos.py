@@ -14,8 +14,8 @@ def read_ignore_file(filename):
     return ignore_list
 
 def get_ignore_lists():
-    userignore = read_ignore_file('user/.userignore')
-    repoignore = read_ignore_file('user/.repoignore')
+    userignore = read_ignore_file('.userignore')
+    repoignore = read_ignore_file('.repoignore')
     return userignore, repoignore
 
 

@@ -18,11 +18,10 @@
 uv run get_users_and_user_orgs_repos.py
 ```
 
-- Edit user/.userignore to ignore user
-- Edit user/.repoignore to ignore repo
+- Edit .repoignore to ignore repo
+- Edit .userignore to ignore user
+- Edit .orgignore to ignore org
 
-- Edit org/.orgignore to ignore org
-- Edit org/.repoignore to ignore repo
 
 ## First Time Clone User Repos
 

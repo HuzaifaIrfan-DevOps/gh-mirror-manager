@@ -14,8 +14,8 @@ def read_ignore_file(filename):
     return ignore_list
 
 def get_ignore_lists():
-    orgignore = read_ignore_file('org/.orgignore')
-    repoignore = read_ignore_file('org/.repoignore')
+    orgignore = read_ignore_file('.orgignore')
+    repoignore = read_ignore_file('.repoignore')
     return orgignore, repoignore
 
 
