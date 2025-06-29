@@ -15,11 +15,14 @@
 ## Get User and Org Repos Listing
 
 ```sh
-uv run get_users_repos_list.py
+uv run get_users_and_user_orgs_repos.py
 ```
 
-- Edit .userignore to ignore user
-- Edit .repoignore to ignore repo
+- Edit user/.userignore to ignore user
+- Edit user/.repoignore to ignore repo
+
+- Edit org/.orgignore to ignore org
+- Edit org/.repoignore to ignore repo
 
 ## First Time Clone User Repos
 
@@ -36,7 +39,8 @@ uv run update_users_repos.py
 ## Create User Gitlab
 
 ```sh
-uv run create_users_gitlab.py
+uv run create_users_gitlab_users.py
+uv run create_orgs_gitlab_users.py
 ```
 ## Push User Repos Gitlab
 

@@ -1,5 +1,4 @@
 import requests
-from users_repos import users_repos
 
 from dotenv import load_dotenv
 import os 
@@ -38,24 +37,6 @@ def create_user_if_missing(username, email, name, password="changeme123", skip_c
     else:
         print(f"❌ Failed to create user: {r.status_code} - {r.text}")
 
-
-
-def main():
-    for user in users_repos.keys():
-        print(f"Processing user: {user}")
-        username = user
-        email = f"{user}@example.com"
-        name = user
-        # Example usage
-        create_user_if_missing(
-            username=username,
-            email=email,
-            name=name
-        )
-
-
-if __name__ == "__main__":
-    main()          
 
 
 

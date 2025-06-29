@@ -57,7 +57,7 @@ def get_user_repos():
                 writer = csv.writer(f)
                 writer.writerow([full_name])
 
-def get_user_org_repos():
+def get_user_orgs_repos():
     print("User's Organizations:")
     for org in gh.get_user().get_orgs():
         org_name = org.login
@@ -89,7 +89,7 @@ def get_user_org_repos():
 
 if __name__ == "__main__":
     get_user_repos()
-    get_user_org_repos()
+    get_user_orgs_repos()
 
     # To close connections after use
     gh.close()
