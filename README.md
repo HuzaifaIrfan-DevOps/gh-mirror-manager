@@ -50,6 +50,14 @@ uv run push_users_repos_gitlab.py
 uv run push_orgs_repos_gitlab.py
 ```
 
+## Run
+
+```sh
+sh get_clone_update_push.sh
+```
+
+
+
 
 ## 🤝🏻 &nbsp;Connect with Me
 
