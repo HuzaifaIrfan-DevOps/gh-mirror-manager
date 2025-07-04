@@ -38,6 +38,7 @@ uv run update_orgs_repos.py
 ```
 
 ## Create User Gitlab
+- Set Default Repo Branch Protection to Instance Admin
 
 ```sh
 uv run create_users_gitlab_users.py
