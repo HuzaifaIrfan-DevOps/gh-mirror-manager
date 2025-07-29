@@ -12,6 +12,15 @@
 [![Demo Video](https://img.youtube.com/vi/EJNBFAzJQYY/0.jpg)](https://www.youtube.com/watch?v=EJNBFAzJQYY)
 
 
+## Copy .env and .ignores
+
+```sh
+cp .env.example .env
+cp .userignore.example .userignore
+cp .orgignore.example .orgignore
+cp .repoignore.example .repoignore
+```
+
 ## Get User and Org Repos Listing
 
 ```sh
