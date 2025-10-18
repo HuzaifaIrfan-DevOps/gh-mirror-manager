@@ -92,4 +92,6 @@ sh get_clone_update_push.sh
 
 Licensed under the GPL3 License, Copyright 2025 Huzaifa Irfan. [LICENSE](LICENSE)
 
+<hr />
+
 Last Updated on 2025-07-29
